@@ -13,12 +13,7 @@ namespace MuntersProject.Core.Services
         public async Task<TResponse> HttpRequestAsync<TRequest, TResponse>(string url, HttpMethod httpMethod,
             TRequest requestBody = default, bool handleErrors = false)
         {
-            var socketsHttpHandler = new SocketsHttpHandler()
-            {
-                MaxConnectionsPerServer = 15
-            };
-
-            using (var client = new HttpClient(socketsHttpHandler))
+            using (var client = new HttpClient())
             {
                 var request = new HttpRequestMessage
                 {
